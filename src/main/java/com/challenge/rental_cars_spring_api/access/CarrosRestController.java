@@ -26,7 +26,7 @@ public class CarrosRestController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Retorna a lista com os carros encontrados.", content = {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ListarCarrosQueryResultItem.class))}),
-            @ApiResponse(responseCode = "500", description = "Erro interno no servidor", content = {
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor ao consultar carros.", content = {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)})})
     public ResponseEntity<List<ListarCarrosQueryResultItem>> listarCarros() {
         return new ResponseEntity<>(listarCarrosQuery.execute(), HttpStatus.OK);

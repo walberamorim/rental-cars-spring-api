@@ -17,5 +17,35 @@
             <column name="vlr_diaria" type="decimal(7,2)"/>
         </createTable>
     </changeSet>
+    
+    <changeSet id="criar-tabela-cliente" author="rafaeljaber">
+        <createTable tableName="cliente">
+            <column name="id" type="int8" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_cliente"/>
+            </column>
+            <column name="nome" type="varchar(100)"/>
+            <column name="cpf" type="varchar(11)"/>
+            <column name="cnh" type="varchar(11)"/>
+            <column name="telefone" type="varchar(13)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="criar-tabela-aluguel" author="rafaeljaber">
+        <createTable tableName="aluguel">
+            <column name="id" type="int8" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_aluguel"/>
+            </column>
+            <column name="carro_id" type="int8">
+                <constraints nullable="false" foreignKeyName="fk_aluguel_carro" references="carro(id)"/>
+            </column>
+            <column name="cliente_id" type="int8">
+                <constraints nullable="false" foreignKeyName="fk_aluguel_cliente" references="cliente(id)"/>
+            </column>
+            <column name="data_aluguel" type="date"/>
+            <column name="data_devolucao" type="date"/>
+            <column name="valor" type="decimal(7,2)"/>
+            <column name="pago" type="boolean"/>
+        </createTable>
+    </changeSet>
 
 </databaseChangeLog>
